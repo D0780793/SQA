@@ -18,6 +18,9 @@ pipeline {
                     exclusionPattern: '**/*Test*.class',
                     execPattern: 'app/build/jacoco/**/*.exec'
                 )
+	    }
+         }
+	stage('sonarqube-analysis'){
 		environment{
 			SONAR_TOKEN = credentials('sonarqube_token')
 		}
@@ -28,7 +31,6 @@ pipeline {
                             -Dsonar.login=4718f7714680a9c0030e3cdd0c978257b2ed5fa1
 			'''
 		}
-            }
-        }
+	}
     }
 }
